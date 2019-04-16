@@ -1,0 +1,4 @@
+[
+    { "keys": ["ctrl+f"], "command": "shfmt", "context": [{ "key": "selector", "operator": "equal", "operand": "source.shell" }] },
+    { "keys": ["ctrl+shift+f"], "command": "shfmt_selection", "context": [{ "key": "selector", "operator": "equal", "operand": "source.shell" }] }
+]

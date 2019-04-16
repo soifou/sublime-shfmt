@@ -1,0 +1,21 @@
+{
+    "paths": {
+        "linux": "~/.go/bin",
+        "osx": "~/.go/bin",
+        "windows": ""
+    },
+    "config": {
+        // Turns on autoformatting on save
+        "autoformat": false,
+        // Indentation: 0 for tabs (default), >0 for number of spaces
+        "indent": 4,
+        // Switch cases will be indented
+        "switch_case_indent": true,
+        // Binary operators like && and | may start a line
+        "binary_ops_line_start": true,
+        // Redirect operators will be followed by a space
+        "redirect_ops_space": true,
+        // Keep column alignment paddings
+        "keep_column_align_paddings": true
+    }
+}

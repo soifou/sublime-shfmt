@@ -1,0 +1,14 @@
+[
+    {
+        "caption": "Shfmt: Format file",
+        "command": "shfmt"
+    },
+    {
+        "caption": "Shfmt: Format selection(s)",
+        "command": "shfmt_selection"
+    },
+    {
+        "caption": "Shfmt: Minify file",
+        "command": "shfmt_minify"
+    }
+]
