@@ -22,10 +22,10 @@ By default it should be available at `$HOME/.go/bin/shfmt`.
 
 **Not available on Package Control at the moment.**
 
-Open Command Palette: <kbd>Package Control: Add Repository</kbd>
-Add `https://github.com/soifou/sublime-shfmt`
-Reopen Command: <kbd>Package Control: Install Package</kbd>
-Search for `sublime-shfmt`
+-   Open Command Palette: <kbd>Package Control: Add Repository</kbd>
+-   Add `https://github.com/soifou/sublime-shfmt`
+-   Reopen Command: <kbd>Package Control: Install Package</kbd>
+-   Search for `sublime-shfmt`
 
 Or git clone this repository directly in your sublime `Packages/` folder.
 
