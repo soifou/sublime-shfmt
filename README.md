@@ -80,15 +80,15 @@ in `~/.bin/shfmt`, add the following value:
 
 Entire file:
 
-- Linux: `<kbd>alt+f</kbd>`
-- OS X: `<kbd>ctrl+f</kbd>`
-- Windows: `<kbd>alt+f</kbd>`
+- Linux: <kbd>alt+f</kbd>
+- OS X: <kbd>ctrl+f</kbd>
+- Windows: <kbd>alt+f</kbd>
 
 Selection(s):
 
-- Linux: `<kbd>alt+shift+f</kbd>`
-- OS X: `<kbd>ctrl+shift+f</kbd>`
-- Windows: `<kbd>alt+shift+f</kbd>`
+- Linux: <kbd>alt+shift+f</kbd>
+- OS X: <kbd>ctrl+shift+f</kbd>
+- Windows: <kbd>alt+shift+f</kbd>
 
 Or add a [custom key bindings](https://www.sublimetext.com/docs/settings.html)
 using the following commands:
