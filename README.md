@@ -1,41 +1,67 @@
 # Shfmt (Shell formatter)
 
-This is a Sublime Text 3 plugin to format your shell scripts using [shfmt](https://github.com/mvdan/sh).
+This is a Sublime Text 3/4 plugin to format your shell scripts using
+[shfmt](https://github.com/mvdan/sh).
 
 ## Features
 
--   Format current file/selection(s)
--   Format current file on save
--   Minify current file
+- Format current file/selection(s)
+- Format current file on save
+- Minify current file
 
 ## Requirements
 
-Install shfmt (tested with v3.0.0-alpha1):
+Obviously shfmt, you can install it in many ways :
 
 ```sh
-$ go get -u github.com/mvdan/sh/cmd/shfmt
+apt install shfmt
+pacman -Sy shfmt
+brew install shfmt
 ```
 
-By default it should be available at `$HOME/.go/bin/shfmt`.
+And so on, I'm sure if you are here you already have it.
 
 ## Installation
 
 **Not available on Package Control at the moment.**
 
--   Open Command Palette: <kbd>Package Control: Add Repository</kbd>
--   Add `https://github.com/soifou/sublime-shfmt`
--   Reopen Command: <kbd>Package Control: Install Package</kbd>
--   Search for `sublime-shfmt`
+- Open Command Palette: `<kbd>Package Control: Add Repository</kbd>`
+- Add `https://github.com/soifou/sublime-shfmt`
+- Reopen Command: `<kbd>Package Control: Install Package</kbd>`
+- Search for `sublime-shfmt`
 
 Or git clone this repository directly in your sublime `Packages/` folder.
+Usually `~/.config/sublime-text/Packages`.
 
 ## Configuration
 
--   Look at default values here `Preferences > Package Settings > Shfmt > Settings - Default`.
--   Edit your user configuration file via `Preferences > Package Settings > Shfmt > Settings - User`.
--   Override needed values.
+- Look at default values here
+  `Preferences > Package Settings > Shfmt > Settings - Default`.
+- Edit your user configuration file via
+  `Preferences > Package Settings > Shfmt > Settings - User`.
+- Override needed values.
 
-Done.
+If `shfmt` is available in your `$PATH` environment, you don't need to set a
+value `paths`
+
+```json
+"paths": {
+    "linux": "",
+    "osx": "",
+    "windows": ""
+},
+```
+
+Else add manually the folder where `shfmt` live. For instance, if `shfmt` live
+in `~/.bin/shfmt`, add the following value:
+
+```json
+"paths": {
+    "linux": "~/.bin",
+    "osx": "",
+    "windows": ""
+},
+```
 
 ## Usage
 
@@ -54,18 +80,19 @@ Done.
 
 Entire file:
 
--   Linux: <kbd>alt+f</kbd>
--   OS X: <kbd>ctrl+f</kbd>
--   Windows: <kbd>alt+f</kbd>
+- Linux: `<kbd>alt+f</kbd>`
+- OS X: `<kbd>ctrl+f</kbd>`
+- Windows: `<kbd>alt+f</kbd>`
 
 Selection(s):
 
--   Linux: <kbd>alt+shift+f</kbd>
--   OS X: <kbd>ctrl+shift+f</kbd>
--   Windows: <kbd>alt+shift+f</kbd>
+- Linux: `<kbd>alt+shift+f</kbd>`
+- OS X: `<kbd>ctrl+shift+f</kbd>`
+- Windows: `<kbd>alt+shift+f</kbd>`
 
-Or add a [custom key bindings](https://www.sublimetext.com/docs/3/settings.html) using the following commands:
+Or add a [custom key bindings](https://www.sublimetext.com/docs/settings.html)
+using the following commands:
 
--   `shfmt`
--   `shfmt_selection`
--   `shfmt_minify`
+- `shfmt`
+- `shfmt_selection`
+- `shfmt_minify`

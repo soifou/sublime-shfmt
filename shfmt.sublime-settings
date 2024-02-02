@@ -1,7 +1,7 @@
 {
     "paths": {
-        "linux": "~/.go/bin",
-        "osx": "~/.go/bin",
+        "linux": "",
+        "osx": "",
         "windows": ""
     },
     "config": {
@@ -16,6 +16,8 @@
         // Redirect operators will be followed by a space
         "redirect_ops_space": true,
         // Keep column alignment paddings
-        "keep_column_align_paddings": true
+        "keep_column_align_paddings": false,
+        // Function opening braces are placed on a separate line
+        "func_opening_braces_separate_line": false
     }
 }
