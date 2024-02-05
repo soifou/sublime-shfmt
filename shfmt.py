@@ -1,4 +1,5 @@
 import os
+import shutil
 import sublime
 import sublime_plugin
 import subprocess
@@ -22,8 +23,18 @@ def log_to_console(msg):
 def format_code(edit, view, region):
     view_context = view.substr(region)
 
+    cmd = shfmt_cmd()
+    if cmd is None:
+        sublime.set_timeout(
+            lambda: sublime.error_message(
+                "{0}: not found in PATH ".format(PLUGIN_NAME)
+            ),
+            0,
+        )
+        return
+
     process = subprocess.Popen(
-        shfmt_cmd(),
+        cmd,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -48,7 +59,13 @@ def format_code(edit, view, region):
 
 
 def shfmt_cmd():
-    cmd = ["shfmt"]
+    get_env()
+
+    shfmt = shutil.which('shfmt')
+    if shfmt is None:
+        return
+
+    cmd = [shfmt]
 
     if minify:
         cmd.append("-s")
@@ -79,7 +96,11 @@ def get_env():
     env.update(os.environ)
 
     paths = load_settings().get("paths")
-    env["PATH"] = paths[sublime.platform()] + os.pathsep + env["PATH"]
+    path = paths[sublime.platform()]
+
+    if len(path) > 0 and os.path.exists(path):
+        env["PATH"] = path + os.pathsep + env["PATH"]
+
     return env
 
 
