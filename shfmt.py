@@ -101,7 +101,8 @@ def get_path():
 class ShfmtListener(sublime_plugin.EventListener):
     def on_pre_save(self, view):
         config = load_settings().get("config")
-        if config.get("autoformat"):
+        scopes = view.scope_name(view.sel()[0].b)
+        if config.get("autoformat") and scopes.startswith("source.shell"):
             view.run_command("shfmt")
 
 
