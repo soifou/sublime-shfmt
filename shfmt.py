@@ -1,5 +1,4 @@
 import os
-import shutil
 import sublime
 import sublime_plugin
 import subprocess
@@ -46,7 +45,9 @@ def format_code(edit, view, region):
         log_to_console(error.decode())
         sublime.set_timeout(
             lambda: sublime.error_message(
-                "{0}: Error occured while formatting, see console log ".format(PLUGIN_NAME)
+                "{0}: Error occured while formatting, see console log ".format(
+                    PLUGIN_NAME
+                )
             ),
             0,
         )
@@ -85,7 +86,6 @@ def shfmt_cmd():
                 cmd.append("-kp")
             if element == "func_opening_braces_separate_line" and config[element]:
                 cmd.append("-fn")
-
 
     return cmd
 
