@@ -3,6 +3,7 @@ import shutil
 import sublime
 import sublime_plugin
 import subprocess
+import shutil
 
 PLUGIN_NAME = "shfmt"
 
@@ -59,9 +60,7 @@ def format_code(edit, view, region):
 
 
 def shfmt_cmd():
-    get_env()
-
-    shfmt = shutil.which('shfmt')
+    shfmt = shutil.which("shfmt", path=get_path())
     if shfmt is None:
         return
 
@@ -91,23 +90,19 @@ def shfmt_cmd():
     return cmd
 
 
-def get_env():
+def get_path():
     env = {}
     env.update(os.environ)
 
     paths = load_settings().get("paths")
-    path = paths[sublime.platform()]
-
-    if len(path) > 0 and os.path.exists(path):
-        env["PATH"] = path + os.pathsep + env["PATH"]
-
-    return env
+    return os.path.expanduser(paths[sublime.platform()]) + os.pathsep + env["PATH"]
 
 
 class ShfmtListener(sublime_plugin.EventListener):
     def on_pre_save(self, view):
         config = load_settings().get("config")
-        if config.get("autoformat"):
+        scopes = view.scope_name(view.sel()[0].b)
+        if config.get("autoformat") and scopes.startswith("source.shell"):
             view.run_command("shfmt")
 
 
