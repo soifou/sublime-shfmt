@@ -101,9 +101,20 @@ def get_path():
 class ShfmtListener(sublime_plugin.EventListener):
     def on_pre_save(self, view):
         config = load_settings().get("config")
+        if not config.get("autoformat"):
+            return
+        # view.sel() returns the selected Regions; `b` is the caret location
         scopes = view.scope_name(view.sel()[0].b)
-        if config.get("autoformat") and scopes.startswith("source.shell"):
-            view.run_command("shfmt")
+        blacklist = config.get("autoformat_blacklisted_scopes")
+        if blacklist:
+            for blscope in blacklist:
+                if blscope in scopes:
+                    return
+        whitelist = config.get("autoformat_scopes") or ["source.shell"]
+        for wscope in whitelist:
+            if wscope in scopes:
+                view.run_command("shfmt") # call ShfmtCommand
+                return
 
 
 class ShfmtSelectionCommand(sublime_plugin.TextCommand):

@@ -7,6 +7,11 @@
     "config": {
         // Turns on autoformatting on save
         "autoformat": false,
+        // Autoformat: if scope contains any of these, it will be auto-formatted
+        "autoformat_scopes": ["source.shell"],
+        // Autoformat: if scope contains any of these, it will never be
+        // auto-formatted
+        "autoformat_blacklisted_scopes": ["source.shell.nu"],
         // Indentation: 0 for tabs (default), >0 for number of spaces
         "indent": 4,
         // Switch cases will be indented
