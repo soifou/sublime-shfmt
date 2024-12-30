@@ -1,17 +1,16 @@
 # Shfmt (Shell formatter)
 
-This is a Sublime Text 3/4 plugin to format your shell scripts using
-[shfmt](https://github.com/mvdan/sh).
+This is a Sublime Text 3/4 plugin to format your shell scripts using [shfmt](https://github.com/mvdan/sh).
 
 ## Features
 
-- Format current file/selection(s)
+- Format current file, selections and scopes
 - Format current file on save
 - Minify current file
 
 ## Requirements
 
-Obviously shfmt, you can install it in many ways :
+Obviously shfmt, you can install it in many ways:
 
 ```sh
 apt install shfmt
@@ -23,37 +22,61 @@ And so on, I'm sure if you are here you already have it.
 
 ## Installation
 
-**Not available on Package Control at the moment.**
+**Not available on Package Control.**
 
-- Open Command Palette: `<kbd>Package Control: Add Repository</kbd>`
-- Add `https://github.com/soifou/sublime-shfmt`
-- Reopen Command: `<kbd>Package Control: Install Package</kbd>`
-- Search for `sublime-shfmt`
+Git clone this repository directly in your packages folder.
 
-Or git clone this repository directly in your sublime `Packages/` folder.
-Usually `~/.config/sublime-text/Packages`.
+> [!WARNING]
+> The plugin name must be called `shfmt` not `sublime-shfmt`
+
+```sh
+cd ~/.config/sublime-text/Packages
+git clone https://github.com/soifou/sublime-shfmt shfmt
+```
 
 ## Configuration
 
-- Look at default values here
-  `Preferences > Package Settings > Shfmt > Settings - Default`.
-- Edit your user configuration file via
-  `Preferences > Package Settings > Shfmt > Settings - User`.
+- Look at default values here `Preferences > Package Settings > Shfmt > Settings - Default`.
+- Edit your user configuration file via `Preferences > Package Settings > Shfmt > Settings - User`.
 - Override needed values.
 
-If `shfmt` is available in your `$PATH` environment, you don't need to set a
-value `paths`
+Default configuration:
 
 ```json
-"paths": {
-    "linux": "",
-    "osx": "",
-    "windows": ""
-},
+{
+    "paths": {
+        "linux": "",
+        "osx": "",
+        "windows": ""
+    },
+    "config": {
+        // Turns on autoformatting on save
+        "autoformat": false,
+        // Autoformat: if scope contains any of these, it will be auto-formatted
+        "autoformat_scopes": ["source.shell"],
+        // Autoformat: if scope contains any of these, it will never be
+        // auto-formatted
+        "autoformat_blacklisted_scopes": ["source.shell.nu"],
+        // Indentation: 0 for tabs (default), >0 for number of spaces
+        "indent": 4,
+        // Switch cases will be indented
+        "switch_case_indent": true,
+        // Binary operators like && and | may start a line
+        "binary_ops_line_start": true,
+        // Redirect operators will be followed by a space
+        "redirect_ops_space": true,
+        // Keep column alignment paddings
+        "keep_column_align_paddings": false,
+        // Function opening braces are placed on a separate line
+        "func_opening_braces_separate_line": false
+    }
+}
 ```
 
-Else add manually the folder where `shfmt` live. For instance, if `shfmt` live
-in `~/.bin/shfmt`, add the following value:
+If `shfmt` is available in your `$PATH` environment, you're already set!
+
+Else add manually the folder where `shfmt` live.
+For instance, if `shfmt` live in `~/.bin/shfmt`, add the following value:
 
 ```json
 "paths": {
@@ -90,8 +113,7 @@ Selection(s):
 - OS X: <kbd>ctrl+shift+f</kbd>
 - Windows: <kbd>alt+shift+f</kbd>
 
-Or add a [custom key bindings](https://www.sublimetext.com/docs/settings.html)
-using the following commands:
+Or add a [custom key bindings](https://www.sublimetext.com/docs/settings.html) using the following commands:
 
 - `shfmt`
 - `shfmt_selection`
